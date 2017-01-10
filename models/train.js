@@ -3,6 +3,11 @@
 // delete the instance???
 //    "delete a train from the database"
 
+// difference between these:
+//    get the passengers waiting for a train at a particular station.
+//    get the passengers who have tickets at a particular station.
+// determine which is the next train arriving at a particular station.
+
 
 const stations = ['Downtown', 'Elm Street', 'Forest Gardens', 'Annex', '10th Ave', 'Waterfront', 'Colosseum', 'Central Station', 'Parkside', 'Grand Boulevard', 'Monument Valley', 'Museum Isle']
 
