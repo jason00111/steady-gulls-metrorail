@@ -116,38 +116,38 @@ Create models with interfaces to satisfy the following user stories, assuming th
 - [ ] As a user of the `Train` model, I receive appropriate and descriptive errors.
 - [ ] As a user of the `Station` model, I can run unit tests that exercise the specs for every public property, instance method, and class method.
 - [ ] As a user of the `Station` model, I can...
-  - [ ] get the ID of a particular station.
-  - [ ] get the location of a particular station.
-  - [ ] get the passengers waiting for a train at a particular station.
+  - [X] get the ID of a particular station.
+  - [X] get the location of a particular station.
+  - [X] get the passengers waiting for a train at a particular station.
   - [ ] get the passengers who have tickets at a particular station.
-  - [ ] get the previous station on the line for a particular station.
-  - [ ] get the next station on the line for a particular station.
+  - [X] get the previous station on the line for a particular station.
+  - [X] get the next station on the line for a particular station.
   - [ ] determine which is the next train arriving at a particular station.
-  - [ ] find a station by its ID.
-  - [ ] find a station by its location.
-  - [ ] create a new station.
-  - [ ] save new stations to the database.
-  - [ ] update existing stations in the database.
-  - [ ] delete a station from the database.
+  - [X] find a station by its ID.
+  - [X] find a station by its location.
+  - [X] create a new station.
+  - [X] save new stations to the database.
+  - [X] update existing stations in the database.
+  - [X] delete a station from the database.
 - [ ] As a user of the `Station` model, I receive appropriate and descriptive errors.
 - [ ] As a user of the `Station` model, I can run unit tests that exercise the specs for every public property, instance method, and class method.
 - [ ] As a user of the `Passenger` model, I can...
-  - [ ] get the ID of a particular passenger.
-  - [ ] get the name of a particular passenger.
-  - [ ] get a particular passenger's ticket.
-  - [ ] set the current station of a particular passenger.
-  - [ ] buy a ticket for a particular passenger from their current station to another specified station.
-  - [ ] use a ticket for a particular passenger.
-  - [ ] determine the current train for a particular passenger.
-  - [ ] determine the current station for a particular passenger.
-  - [ ] find a passenger by their ID.
-  - [ ] find a passenger by their name.
-  - [ ] find all passengers at a station.
-  - [ ] find all passengers on a train.
-  - [ ] create a new passenger.
-  - [ ] save new passengers to the database.
-  - [ ] update existing passengers in the database.
-  - [ ] delete a passenger from the database.
+  - [X] get the ID of a particular passenger.
+  - [X] get the name of a particular passenger.
+  - [X] get a particular passenger's ticket.
+  - [X] set the current station of a particular passenger.
+  - [X] buy a ticket for a particular passenger from their current station to another specified station.
+  - [X] use a ticket for a particular passenger.
+  - [X] determine the current train for a particular passenger.
+  - [X] determine the current station for a particular passenger.
+  - [X] find a passenger by their ID.
+  - [X] find a passenger by their name.
+  - [X] find all passengers at a station.
+  - [X] find all passengers on a train.
+  - [X] create a new passenger.
+  - [X] save new passengers to the database.
+  - [X] update existing passengers in the database.
+  - [X] delete a passenger from the database.
 - [ ] As a user of the `Passenger` model, I receive appropriate and descriptive errors.
 - [ ] As a user of the `Station` model, I can run unit tests that exercise the specs for every public property, instance method, and class method.
 
