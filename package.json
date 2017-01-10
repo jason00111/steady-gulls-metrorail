@@ -1,0 +1,28 @@
+{
+  "name": "metrorail-backend",
+  "version": "1.0.0",
+  "description": "Data model and database for a city transit system",
+  "scripts": {
+    "test": "",
+    "repl": "",
+    "db:create": "node db/create.js",
+    "db:migrate": "",
+    "db:seed": "",
+    "db:drop": "",
+    "db:reset": "",
+    "db:console": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jason00111/steady-gulls-metrorail.git"
+  },
+  "author": "John, Jason",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jason00111/steady-gulls-metrorail/issues"
+  },
+  "homepage": "https://github.com/jason00111/steady-gulls-metrorail#readme",
+  "dependencies": {
+    "knex": "^0.12.6"
+  }
+}
