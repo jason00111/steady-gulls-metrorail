@@ -1,3 +1,3 @@
-updatePassenger
-getPassenger
-deletePassenger
+// updatePassenger
+// getPassenger
+// deletePassenger

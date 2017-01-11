@@ -4,8 +4,8 @@
   "description": "Data model and database for a city transit system",
   "scripts": {
     "test": "",
-    "repl": "",
-    "db:create": "node db/create.js",
+    "repl": "node db/repl.js",
+    "db:create": "createdb metrorail-$NODE_ENV",
     "db:migrate": "knex migrate:latest",
     "db:seed": "",
     "db:drop": "node db/drop.js",
