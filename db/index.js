@@ -2,18 +2,18 @@ const {updateRecord, deleteRecord, getRecord} = require('./record')
 
 module.exports = {
   passenger: {
-    updatePassenger: updateRecord.bind(this, 'passengers'),
-    deletePassenger: deleteRecord.bind(this, 'passengers'),
-    getPassenger: getRecord.bind(this, 'passengers')
+    updatePassenger: updateRecord.bind(null, 'passengers'),
+    deletePassenger: deleteRecord.bind(null, 'passengers'),
+    getPassenger: getRecord.bind(null, 'passengers')
   },
   train: {
-    updateTrain: updateRecord.bind(this, 'trains'),
-    deleteTrain: deleteRecord.bind(this, 'trains'),
-    getTrain: getRecord.bind(this, 'trains')
+    updateTrain: updateRecord.bind(null, 'trains'),
+    deleteTrain: deleteRecord.bind(null, 'trains'),
+    getTrain: getRecord.bind(null, 'trains')
   },
   station: {
-    updateStation: updateRecord.bind(this, 'stations'),
-    deleteStation: deleteRecord.bind(this, 'stations'),
-    getStation: getRecord.bind(this, 'stations')
+    updateStation: updateRecord.bind(null, 'stations'),
+    deleteStation: deleteRecord.bind(null, 'stations'),
+    getStation: getRecord.bind(null, 'stations')
   }
 }
