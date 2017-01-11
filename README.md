@@ -98,20 +98,20 @@ Expose the following commands (and more, if you need) using the `scripts` proper
 Create models with interfaces to satisfy the following user stories, assuming the "user" in this case is a programmer using your data model.
 
 - [ ] As a user of the `Train` model, I can...
-  - [ ] get the number of a particular train.
-  - [ ] get the capacity for passengers of a particular train.
-  - [ ] get the passengers of a particular train.
-  - [ ] determine whether a particular train is full (at capacity) or not.
-  - [ ] determine the current station of a particular train.
-  - [ ] determine the next station of a particular train.
+  - [X] get the number of a particular train.
+  - [X] get the capacity for passengers of a particular train.
+  - [X] get the passengers of a particular train.
+  - [X] determine whether a particular train is full (at capacity) or not.
+  - [X] determine the current station of a particular train.
+  - [X] determine the next station of a particular train.
   - [ ] determine which train is arriving next at a particular station.
-  - [ ] move a train to its next station.
-  - [ ] offboard passengers whose destination is a train's current station.
-  - [ ] onboard passengers of a train at the current station.
-  - [ ] find a train by its number.
-  - [ ] create a new train.
-  - [ ] save new trains to the database.
-  - [ ] update existing trains in the database.
+  - [X] move a train to its next station.
+  - [X] offboard passengers whose destination is a train's current station.
+  - [X] onboard passengers of a train at the current station.
+  - [X] find a train by its number.
+  - [X] create a new train.
+  - [X] save new trains to the database.
+  - [X] update existing trains in the database.
   - [ ] delete a train from the database.
 - [ ] As a user of the `Train` model, I receive appropriate and descriptive errors.
 - [ ] As a user of the `Station` model, I can run unit tests that exercise the specs for every public property, instance method, and class method.
