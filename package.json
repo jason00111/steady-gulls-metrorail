@@ -10,7 +10,7 @@
     "db:seed": "",
     "db:drop": "dropdb metrorail_$NODE_ENV",
     "db:reset": "npm run db:drop && npm run db:create && npm run db:migrate",
-    "db:console": ""
+    "db:console": "psql metrorail_$NODE_ENV"
   },
   "repository": {
     "type": "git",
