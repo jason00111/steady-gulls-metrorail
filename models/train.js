@@ -1,24 +1,3 @@
-// Things to ask:
-
-// ## Train
-
-// "determine which train is arriving next at a particular station"
-//    Does this belong on the train model
-//    Ask about order of trains
-//      Keep track of arival/departure times??
-
-
-// ## Station
-
-// difference between these:
-//    get the passengers waiting for a train at a particular station.
-//    get the passengers who have tickets at a particular station.
-//      can you be waiting for a train without a ticket???
-
-// determine which is the next train arriving at a particular station.
-//    is this differenct from the one on the train model?
-
-
 const stations = ['Downtown', 'Elm Street', 'Forest Gardens', 'Annex', '10th Ave', 'Waterfront', 'Colosseum', 'Central Station', 'Parkside', 'Grand Boulevard', 'Monument Valley', 'Museum Isle']
 
 export default class Train {
@@ -37,8 +16,7 @@ export default class Train {
   }
 
   isFull() {
-    if (this.passengers.length >= this.capacity) return true
-    else return false
+    return this.passengers.length >= this.capacity
   }
 
   moveToNextStation() {
