@@ -6,10 +6,10 @@
     "test": "",
     "repl": "",
     "db:create": "node db/create.js",
-    "db:migrate": "",
+    "db:migrate": "knex migrate:latest",
     "db:seed": "",
-    "db:drop": "",
-    "db:reset": "",
+    "db:drop": "node db/drop.js",
+    "db:reset": "npm run db:drop && npm run db:create && npm run db:migrate",
     "db:console": ""
   },
   "repository": {
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/jason00111/steady-gulls-metrorail#readme",
   "dependencies": {
-    "knex": "^0.12.6"
+    "knex": "^0.12.6",
+    "pg": "^6.1.2"
   }
 }

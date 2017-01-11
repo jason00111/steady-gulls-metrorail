@@ -10,4 +10,4 @@ console.log(environment);
 const database = `metrorail_${environment}`
 console.log(database);
 
-knex.raw(`CREATE DATABASE ${database};`).catch(error => console.log(error)).then( process.exit )
+knex.raw(`DROP DATABASE IF EXISTS ${database};`).catch(error => console.log(error)).then( process.exit )
