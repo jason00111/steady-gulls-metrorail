@@ -1,7 +1,5 @@
 const knexconfig = require('../knexfile');
 const knex = require('knex')(knexconfig[process.env.NODE_ENV])
-console.log(knexconfig);
-
 
 function updateTrain (options) {
   knex('trains')
@@ -13,21 +11,18 @@ function updateTrain (options) {
       } else{
         return knex('trains').where('number', options.number).update(options)
       }
-    }).catch(error => console.log('ERROR!!!!>>>>!!!!>>>!>!>!>!>', error))
+    }).catch(error => console.log('ERROR:', error))
 }
 
 function deleteTrain (options){
   knex('trains')
     .where('number', options.number).del()
-      .catch(error => console.log(error))
+    .catch(error => console.log('ERROR:', error))
 }
 
-function getTrainByNumber (options){
+function getTrain (options){
   return knex('trains').where('number', options.number)
+    .catch(error => console.log('ERROR:', error))
 }
 
-module.exports = { updateTrain, deleteTrain, getTrainByNumber }
-
-//
-//
-// getTrainByNumber //change to getTrain
+module.exports = { updateTrain, deleteTrain, getTrain }
