@@ -1,28 +1,28 @@
 const knexconfig = require('../knexfile');
 const knex = require('knex')(knexconfig[process.env.NODE_ENV])
 
-function updatePassenger (options) {
-  knex('passengers')
+function updateRecord (tableName, options) {
+  knex(tableName)
     .where('id', options.id)
     .then(result => {
       if(result.length === 0){
-        return knex('passengers')
+        return knex(tableName)
           .insert(options)
       } else{
-        return knex('passengers').where('id', options.id).update(options)
+        return knex(tableName).where('id', options.id).update(options)
       }
     }).catch(error => console.log('ERROR:', error))
 }
 
-function deletePassenger (options){
-  knex('passengers')
+function deleteRecord (tableName, options){
+  knex(tableName)
     .where('id', options.id).del()
     .catch(error => console.log('ERROR:', error))
 }
 
-function getPassenger (options){
-  return knex('passengers').where('id', options.id)
+function getRecord (tableName, options){
+  return knex(tableName).where('id', options.id)
     .catch(error => console.log('ERROR:', error))
 }
 
-module.exports = { updatePassenger, deletePassenger, getPassenger }
+module.exports = { updateRecord, deleteRecord, getRecord }
