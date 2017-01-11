@@ -13,7 +13,7 @@ const stations = [
   {id: 11, location: 'Museum Isle'}
 ]
 
-export default class Stations{
+module.exports = class Stations{
   constructor(options){
     this.id = options.id
     this.passengers = options.passengers

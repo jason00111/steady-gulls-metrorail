@@ -13,7 +13,7 @@
 //   {id: 11, location: 'Museum Isle'}
 // ]
 
-export default class Passenger {
+module.exports = class Passenger {
   constructor(options) {
     this.id = options.id || 0
     this.name = options.name || 'Jon Doe'
