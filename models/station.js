@@ -1,3 +1,5 @@
+const db = require('../db').station
+
 const stations = [
   {id: 0, location: 'Downtown'},
   {id: 1, location: 'Elm Street'},
@@ -13,10 +15,10 @@ const stations = [
   {id: 11, location: 'Museum Isle'}
 ]
 
-module.exports = class Stations{
+module.exports = class Station{
   constructor(options){
     this.id = options.id
-    this.passengers = options.passengers
+    this.passengers = options.passengers || []
 
     db.updateStation({
       id: this.id,
@@ -25,20 +27,20 @@ module.exports = class Stations{
   }
 
   get location(){
-    return station[this.index].location
+    return stations[this.id].location
   }
 
   getPreviousStation(){
-    const previousIndex = ((this.index + stations.length - 1) % stations.length)
-    const prevLocation = station[previousIndex].location
-    const stationObject = db.getStation({location: nextLocation})
-    return new Station(stationObject)
+    const previousIndex = ((this.id + stations.length - 1) % stations.length)
+    console.log(previousIndex);
+    return db.getStation({id: previousIndex})
+    .catch(error => console.log('db call error', error))
+      // .then(result => new Station(result)).catch(error => console.log('new station error', error))
   }
 
   getNextStation(){
-    const nextIndex = ((this.index + 1) % stations.length)
-    const nextLocation = station[nextIndex].location
-    const stationObject = db.getStation({location: nextLocation})
+    const nextIndex = ((this.id + 1) % stations.length)
+    const stationObject = db.getStation({id: nextIndex})
     return new Station(stationObject)
   }
 
