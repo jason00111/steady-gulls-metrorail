@@ -1,4 +1,3 @@
-
 exports.up = (knex, Promise) => {
   return knex.schema.createTable('trains', table => {
     table.integer('id')

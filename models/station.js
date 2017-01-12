@@ -45,8 +45,11 @@ module.exports = class Station{
   }
 
   static find(indentifier){
-    const stationObject = db.getStation(identifier)
-    return new Station(stationObject)
+    // const stationObject = db.getStation(identifier)
+    // return new Station(stationObject)
+
+    return db.getStation(identifier)
+      .then(stationObject => new Station(stationObject))
   }
 
   delete(){

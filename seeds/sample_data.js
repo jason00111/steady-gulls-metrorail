@@ -1,10 +1,7 @@
-
 exports.seed = function(knex, Promise) {
-  // Deletes ALL existing entries
   return knex('stations').del()
     .then(function () {
       return Promise.all([
-        // Inserts seed entries
         knex('stations').insert({id: 0, name: 'Downtown'}),
         knex('stations').insert({id: 1, name: 'Elm Street'}),
         knex('stations').insert({id: 2, name: 'Forest Gardens'}),

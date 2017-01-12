@@ -39,7 +39,10 @@ test('determine whether a particular train is full (at capacity) or not', functi
 test('determine the current station of a particular train', function(t) {
   const myTrain = Train.find({id: 0})
 
-  t.equal(myTrain.station, 'Downtown')
+  myTrain.station.then(
+    stationInstance => t.equal(stationInstance.location, 'Downtown'))
+
+  t.equal(myTrain.station.location, 'Downtown')
 
   t.end()
 })
@@ -47,7 +50,7 @@ test('determine the current station of a particular train', function(t) {
 test('determine the next station of a particular train', function(t) {
   const myTrain = Train.find({id: 0})
 
-  t.equal(myTrain.nextStation, 'Elm Street')
+  t.equal(myTrain.nextStation.location, 'Elm Street')
 
   t.end()
 })
@@ -62,11 +65,18 @@ test('determine which train is arriving next at a particular station',
 )
 
 test('move a train to its next station', function(t) {
+  const myTrain = Train.find({id: 3})
+
+  t.equal(myTrain.station, 'Annex')
+
+  myTrain.moveToNextStation()
+
+  t.equal(myTrain.station, '10th Ave')
 
   t.end()
 })
 
-test('offboard passengers whose destination is a train's current station', function(t) {
+test('offboard passengers whose destination is a train\'s current station', function(t) {
 
   t.end()
 })
@@ -77,26 +87,53 @@ test('onboard passengers of a train at the current station', function(t) {
 })
 
 test('find a train by its number', function(t) {
+  const myTrain = Train.find({id: 0})
+
+  t.equal(myTrain.number, 0)
 
   t.end()
 })
 
 test('create a new train', function(t) {
+  t.equal(Train.find({id: 7}), null)
+
+  const myTrain = new Train({id: 7})
+
+  t.notEqual(Train.find({id: 7}), null)
 
   t.end()
 })
 
 test('save new trains to the database', function(t) {
+  t.equal(Train.find({id: 7}), null)
+
+  const myTrain = new Train({id: 7})
+
+  t.notEqual(Train.find({id: 7}), null)
 
   t.end()
 })
 
 test('update existing trains in the database', function(t) {
+  const myTrain = Train.find({id: 0})
+
+  t.equal(myTrain.capacity, 200)
+
+  myTrain.capacity = 100
+
+  t.equal(Train.find({id: 0}).capacity, 100)
 
   t.end()
 })
 
 test('delete a train from the database', function(t) {
+  const myTrain = Train.find({id: 0})
+
+  t.notEqual(Train.find({id: 0}), null)
+
+  myTrain.delete()
+
+  t.equal(Train.find({id: 0}), null)
 
   t.end()
 })

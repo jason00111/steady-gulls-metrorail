@@ -1,7 +1,4 @@
-// Update with your config settings.
-
 module.exports = {
-
   development: {
     client: 'pg',
     connection: {
@@ -10,10 +7,10 @@ module.exports = {
     }
   },
 
-  staging: {
+  testing: {
     client: 'pg',
     connection: {
-      database: 'metrorail_development',
+      database: 'metrorail_testing',
       host: '127.0.0.1'
     }
   },
@@ -21,7 +18,7 @@ module.exports = {
   production: {
     client: 'pg',
     connection: {
-      database: 'metrorail_development',
+      database: 'metrorail_production',
       host: '127.0.0.1'
     }
   }
