@@ -1,0 +1,29 @@
+{
+  "name": "metrorail-backend",
+  "version": "1.0.0",
+  "description": "Data model and database for a city transit system",
+  "scripts": {
+    "test": "",
+    "repl": "node db/repl.js",
+    "db:create": "createdb metrorail_$NODE_ENV",
+    "db:migrate": "knex migrate:latest",
+    "db:seed": "knex seed:run",
+    "db:drop": "dropdb metrorail_$NODE_ENV",
+    "db:reset": "npm run db:drop && npm run db:create && npm run db:migrate",
+    "db:console": "psql metrorail_$NODE_ENV"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jason00111/steady-gulls-metrorail.git"
+  },
+  "author": "John, Jason",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jason00111/steady-gulls-metrorail/issues"
+  },
+  "homepage": "https://github.com/jason00111/steady-gulls-metrorail#readme",
+  "dependencies": {
+    "knex": "^0.12.6",
+    "pg": "^6.1.2"
+  }
+}
