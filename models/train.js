@@ -6,14 +6,14 @@ module.exports = class Train {
   constructor(options){
     this.id = options.id || 0
     this.capacity = options.capacity || 200
-    this.passengers = options.passengers || [{id: 0, destination: 3}]
-    this.currentStationIndex = options.currentStationIndex || 0
+    this.passengers = options.passengers || []
+    this.stationIndex = options.stationIndex || 0
 
     db.updateTrain({
       id: this.id,
       capacity: this.capacity,
       passengers: this.passengers,
-      currentStationIndex: this.currentStationIndex
+      stationIndex: this.stationIndex
     })
   }
 
@@ -26,22 +26,22 @@ module.exports = class Train {
   }
 
   moveToNextStation() {
-    this.currentStationIndex = (this.currentStationIndex + 1) % stations.length
+    this.stationIndex = (this.stationIndex + 1) % stations.length
 
-    db.updateTrain({currentStationIndex: this.currentStationIndex})
+    db.updateTrain({stationIndex: this.stationIndex})
   }
 
-  get currentStation() {
-    return stations[this.currentStationIndex]
+  get station() {
+    return stations[this.stationIndex]
   }
 
   get nextStation() {
-    return stations[(this.currentStationIndex + 1) % stations.length]
+    return stations[(this.stationIndex + 1) % stations.length]
   }
 
   offboard() {
     this.passengers = this.passengers.filter(passenger => {
-      return passenger.destination !== this.currentStationIndex
+      return passenger.destination !== this.stationIndex
     })
 
     db.updateTrain({passengers: this.passengers})
