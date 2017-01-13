@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Data model and database for a city transit system",
   "scripts": {
-    "test": "",
+    "test": "tape specs/*/*spec.js",
     "repl": "node db/repl.js",
     "db:create": "createdb metrorail_$NODE_ENV",
     "db:migrate": "knex migrate:latest",
@@ -24,6 +24,7 @@
   "homepage": "https://github.com/jason00111/steady-gulls-metrorail#readme",
   "dependencies": {
     "knex": "^0.12.6",
-    "pg": "^6.1.2"
+    "pg": "^6.1.2",
+    "tape": "^4.6.3"
   }
 }

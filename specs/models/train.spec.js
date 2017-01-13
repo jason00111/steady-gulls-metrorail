@@ -1,77 +1,88 @@
 const test = require('tape')
+console.log('@allnazi');
 const Train = require('../../models').Train
 
 test('get the number of a particular train', function(t) {
-  const myTrain = Train.find({id: 0})
-
-  t.equal(myTrain.number, 0)
+  Train.find({id: 0}).then(train => {
+    t.equal(train.number, 0)
+  })
 
   t.end()
 })
 
 test('get the capacity for passengers of a particular train', function(t) {
-  const myTrain = Train.find({id: 0})
-
-  t.equal(myTrain.capacity, 200)
+  Train.find({id: 0}).then(train => {
+    t.equal(train.capacity, 200)
+  })
 
   t.end()
 })
 
-test('get the passengers of a particular train', function(t) {
-  const myTrain = Train.find({id: 0})
+test.only('get the passengers of a particular train', function(t) {
+  Train.find({id: 0}).then(train => {
+    console.log('IDENTIFIER',train.passengers);  //START HERE:  CHANGE TO PROMISE THING
+    t.equal(train.passengers[0].id, 0)
+    t.equal(train.passengers[1].id, 1)
+    t.equal(train.passengers[2].id, 2)
+    t.equal(train.passengers[3].id, 3)
 
-  t.deepEqual(myTrain.passengers, [{id: 0}, {id: 1}, {id: 2}, {id: 3}, {id: 4}])
-
-  t.end()
+    t.equal(train.passengers[0].name, 'Cara')
+    t.equal(train.passengers[1].name, 'Marlo')
+    t.equal(train.passengers[2].name, 'Lester')
+    t.equal(train.passengers[3].name, 'France')
+    t.end()
+  })
 })
 
 test('determine whether a particular train is full (at capacity) or not', function(t) {
 
-  const myTrain = Train.find({id: 0})
-  const myFullTrain = Train.find({id: 1})
+  Train.find({id: 0}).then(train => {
+    t.equal(train.isFull(), false)
+  })
 
-  t.equal(myTrain.isFull(), false)
-  t.equal(myFullTrain.isFull(), true)
+  Train.find({id: 1}).then(train => {
+    t.equal(train.isFull(), true)
+  })
 
   t.end()
 })
 
 test('determine the current station of a particular train', function(t) {
-  const myTrain = Train.find({id: 0})
-
-  myTrain.station.then(
-    stationInstance => t.equal(stationInstance.location, 'Downtown'))
-
-  t.equal(myTrain.station.location, 'Downtown')
+  Train.find({id: 0}).then(train => {
+    train.station.then(
+      stationInstance => t.equal(stationInstance.location, 'Downtown'))
+  })
 
   t.end()
 })
 
 test('determine the next station of a particular train', function(t) {
-  const myTrain = Train.find({id: 0})
+  Train.find({id: 0}).then(train => {
+    t.equal(train.nextStation.location, 'Elm Street')
+  })
 
-  t.equal(myTrain.nextStation.location, 'Elm Street')
+
 
   t.end()
 })
 
-test('determine which train is arriving next at a particular station',
-  function(t) {
-    t.equal(Train.nextArrivalAt({id: 2}).id, 1)
-    t.equal(Train.nextArrivalAt({name: 'Forest Gardens'}).id, 1)
+test('determine which train is arriving next at a particular station', function(t) {
+
+    t.equal(Train.nextToArriveAt({id: 2}).id, 1)
+    t.equal(Train.nextToArriveAt({name: 'Forest Gardens'}).id, 1)
 
     t.end()
   }
 )
 
 test('move a train to its next station', function(t) {
-  const myTrain = Train.find({id: 3})
+  Train.find({id: 3}).then(train => {
+    t.equal(train.station.location, 'Annex')
 
-  t.equal(myTrain.station, 'Annex')
+    train.moveToNextStation()
 
-  myTrain.moveToNextStation()
-
-  t.equal(myTrain.station, '10th Ave')
+    t.equal(train.station.location, '10th Ave')
+  } )
 
   t.end()
 })
@@ -127,13 +138,16 @@ test('update existing trains in the database', function(t) {
 })
 
 test('delete a train from the database', function(t) {
-  const myTrain = Train.find({id: 0})
+  Train.find({id: 0}).then(train => {
+    t.notEqual(train, null)
 
-  t.notEqual(Train.find({id: 0}), null)
+    train.delete()
 
-  myTrain.delete()
+    Train.find({id: 0}).then(nullTrain => {
+      t.equal(nullTrain, null)
+    })
 
-  t.equal(Train.find({id: 0}), null)
+  })
 
   t.end()
 })

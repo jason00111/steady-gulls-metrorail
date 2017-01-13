@@ -25,4 +25,8 @@ function getRecord (tableName, options){
     .catch(error => console.log('ERROR:', error))
 }
 
-module.exports = { updateRecord, deleteRecord, getRecord }
+function getAllRecords (tableName){
+  return knex(tableName).select('*')
+}
+
+module.exports = { updateRecord, deleteRecord, getRecord, getAllRecords }

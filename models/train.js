@@ -1,8 +1,13 @@
-const db = require('../db').train
+const db = require('../db')
 
 const Station = require('./station')
+const Passenger = require('./passenger')
 
-const stations = ['Downtown', 'Elm Street', 'Forest Gardens', 'Annex', '10th Ave', 'Waterfront', 'Colosseum', 'Central Station', 'Parkside', 'Grand Boulevard', 'Monument Valley', 'Museum Isle']
+const stations = [
+    'Downtown', 'Elm Street', 'Forest Gardens', 'Annex', '10th Ave',
+    'Waterfront', 'Colosseum', 'Central Station', 'Parkside', 'Grand Boulevard',
+    'Monument Valley', 'Museum Isle'
+  ]
 
 module.exports = class Train {
   constructor(options){
@@ -11,7 +16,7 @@ module.exports = class Train {
     this._passengers = options.passengers || []
     this._stationIndex = options.stationIndex || 0
 
-    db.updateTrain({
+    db.train.updateTrain({
       id: this.id,
       capacity: this._capacity,
       passengers: this._passengers,
@@ -24,7 +29,12 @@ module.exports = class Train {
   }
 
   get passengers() {
-    return this._passengers
+    return db.passenger.getAllPassengers()
+      .then(array =>
+        array.map(passengerObject =>
+          new Passenger(passengerObject)
+        )
+      )
   }
 
   get stationIndex() {
@@ -34,19 +44,19 @@ module.exports = class Train {
   set capacity (value) {
     this._capacity = value
 
-    db.updateTrain({id: this.id, capacity: this._capacity})
+    db.train.updateTrain({id: this.id, capacity: this._capacity})
   }
 
   set passengers (value) {
     this._passengers = value
 
-    db.updateTrain({id: this.id, passengers: this._passengers})
+    db.train.updateTrain({id: this.id, passengers: this._passengers})
   }
 
   set stationIndex (value) {
     this._stationIndex = value
 
-    db.updateTrain({id: this.id, stationIndex: this._stationIndex})
+    db.train.updateTrain({id: this.id, stationIndex: this._stationIndex})
   }
 
   get number() {
@@ -86,11 +96,18 @@ module.exports = class Train {
   }
 
   delete() {
-    db.deleteTrain({id: this.id})
+    db.train.deleteTrain({id: this.id})
   }
 
   static find(trainNumber) {
-    const trainObject = db.getTrainByNumber(trainNumber)
-    return new Train(trainObject)
+    return db.train.getTrain(trainNumber)
+    .then(returnArray => {
+      console.log(returnArray);
+      return new Train(Object.assign({}, returnArray[0], {passengers: returnArray[0].passengers.passengers} ))
+    })
+  }
+
+  static nextToArriveAt(station){
+    return db.train.getAllTrains()
   }
 }
