@@ -14,7 +14,7 @@ Once you have PostgreSQL installed and running, run these commands in the termin
 
 ```
 npm install
-npm run env:dev
+export NODE_ENV=development
 npm run db:setup
 ```
 
