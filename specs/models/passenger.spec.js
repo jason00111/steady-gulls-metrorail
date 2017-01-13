@@ -99,7 +99,7 @@ test('find all passengers at a station.', (t) => {
       Passenger.find(stationInstance)
         .then((passengerInstanceArray) => {
           const passengerIdArray = passengerInstanceArray.map(
-            passengerInstance => passengerInstance.id,
+            passengerInstance => passengerInstance.id
           )
 
           t.true(passengerIdArray.includes(18))
@@ -115,7 +115,7 @@ test('find all passengers on a train.', (t) => {
       Passenger.find(trainInstance)
         .then((passengerInstanceArray) => {
           const passengerIdArray = passengerInstanceArray.map(
-            passengerInstance => passengerInstance.id,
+            passengerInstance => passengerInstance.id
           )
 
           t.true(passengerIdArray.includes(5))

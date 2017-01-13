@@ -32,8 +32,8 @@ module.exports = class Train {
     return db.passenger.getAllPassengers()
       .then(array =>
         array.map(passengerObject =>
-          new Passenger(passengerObject),
-        ),
+          new Passenger(passengerObject)
+        )
       )
   }
 
@@ -81,7 +81,7 @@ module.exports = class Train {
 
   offboard() {
     this.passengers = this.passengers.filter(
-      passenger => passenger.destination !== this.stationIndex,
+      passenger => passenger.destination !== this.stationIndex
     )
   }
 
@@ -105,7 +105,7 @@ module.exports = class Train {
     .then(returnArray => new Train(Object.assign(
         {},
         returnArray[0],
-        { passengers: returnArray[0].passengers.passengers },
+        { passengers: returnArray[0].passengers.passengers }
       )))
   }
 
