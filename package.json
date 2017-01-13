@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Data model and database for a city transit system",
   "scripts": {
+    "lint": "./node_modules/.bin/eslint db/* migrations/* models/* seeds/* specs/*",
+    "lint:fix": "./node_modules/.bin/eslint --fix db/* migrations/* models/* seeds/* specs/*",
     "test": "tape specs/*/*spec.js",
     "repl": "node db/repl.js",
     "db:setup": "npm run db:create && npm run db:migrate && npm run db:seed",
@@ -30,5 +32,10 @@
     "knex": "^0.12.6",
     "pg": "^6.1.2",
     "tape": "^4.6.3"
+  },
+  "devDependencies": {
+    "eslint": "^3.13.1",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-plugin-import": "^2.2.0"
   }
 }
