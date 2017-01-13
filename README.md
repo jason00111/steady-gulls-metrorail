@@ -1,6 +1,29 @@
 # steady-gulls-metrorail
 Data model and database for a city transit system.
 
+## Setup Instructions
+
+If you don't already have PostgreSQL installed and running, run the following commands in the terminal.  This assumes you have `brew` installed.  If you don't, visit http://brew.sh/.
+
+```
+brew install postgresql
+brew services start postgresql
+```
+
+Once you have PostgreSQL installed and running, run these commands in the terminal to setup the database.
+
+```
+npm install
+npm run env:dev
+npm run db:setup
+```
+
+See package.json for other available scripts.
+
+## Usage Instructions
+
+Under construction
+
 ## Description
 
 _Provide a brief, high-level overview of what the final product (artifact) of this goal is. Include any relevant resources or dependencies here._

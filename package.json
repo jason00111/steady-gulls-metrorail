@@ -5,12 +5,16 @@
   "scripts": {
     "test": "tape specs/*/*spec.js",
     "repl": "node db/repl.js",
+    "db:setup": "npm run db:create && npm run db:migrate && npm run db:seed",
     "db:create": "createdb metrorail_$NODE_ENV",
     "db:migrate": "knex migrate:latest",
     "db:seed": "knex seed:run",
     "db:drop": "dropdb metrorail_$NODE_ENV",
     "db:reset": "npm run db:drop && npm run db:create && npm run db:migrate",
-    "db:console": "psql metrorail_$NODE_ENV"
+    "db:console": "psql metrorail_$NODE_ENV",
+    "env:dev": "export NODE_ENV=development",
+    "env:test": "export NODE_ENV=test",
+    "env:prod": "export NODE_ENV=production"
   },
   "repository": {
     "type": "git",
