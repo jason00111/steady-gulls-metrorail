@@ -1,5 +1,4 @@
 const test = require('tape')
-console.log('@allnazi');
 const Station = require('../../models').Station
 
 test('get the ID of a particular station.', function(t) {

@@ -16,7 +16,13 @@ exports.seed = function(knex, Promise) {
         knex('stations').insert({id: 8, name: 'Parkside'}),
         knex('stations').insert({id: 9, name: 'Grand Boulevard'}),
         knex('stations').insert({id: 10, name: 'Monument Valley'}),
-        knex('stations').insert({id: 11, name: 'Museum Isle'}),
+        knex('stations').insert({
+          id: 11,
+          name: 'Museum Isle',
+          passengers: {
+            passengers: [{id: 19}]
+          }
+        }),
 
         knex('passengers').insert({id: 0, name: 'Cara'}),
         knex('passengers').insert({id: 1, name: 'Marlo'}),
@@ -36,8 +42,8 @@ exports.seed = function(knex, Promise) {
         knex('passengers').insert({id: 15, name: 'Kami'}),
         knex('passengers').insert({id: 16, name: 'Senaida'}),
         knex('passengers').insert({id: 17, name: 'Hannelore'}),
-        knex('passengers').insert({id: 18, name: 'Terrilyn'}),
-        knex('passengers').insert({id: 19, name: 'Chadwick'}),
+        knex('passengers').insert({id: 18, name: 'Terrilyn', stationId: 11}),
+        knex('passengers').insert({id: 19, name: 'Chadwick', stationId: 11}),
 
         knex('trains').insert({
           id: 0,
@@ -67,7 +73,7 @@ exports.seed = function(knex, Promise) {
           id: 3,
           capacity: 300,
           passengers: {
-            passengers: [{id: 15}, {id: 16}, {id: 17}, {id: 18}, {id: 19}]
+            passengers: [{id: 15}, {id: 16}, {id: 17}]
           },
           stationIndex: 3
         })
